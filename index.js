@@ -24,4 +24,8 @@ inquirer
     choices:['Manager', 'Engineer', 'Intern']
 }
 ])
- module.exports
+.then((response) =>{
+return Answers
+}
+)
+ module.exports = Answers
