@@ -1,4 +1,4 @@
-const generateTeam = (team) => {
+const generateTeam = (staff) => {
     const generateManager = (manager) => {
       return `
           <div class="card employee-card">
@@ -10,7 +10,7 @@ const generateTeam = (team) => {
               <ul class="list-group">
                   <li class="list-group-item">ID: ${manager.getId()}</li>
                   <li class="list-group-item">Email: <a href="mailto:${manager.getEmail()}">${manager.getEmail()}</a></li>
-                  <li class="list-group-item">Office number: ${manager.getOfficeNumber()}</li>
+                  <li class="list-group-item">Office number: ${manager.getOffNum()}</li>
               </ul>
           </div>
       </div>
@@ -56,18 +56,18 @@ const generateTeam = (team) => {
     const html = [];
   
     html.push(
-      team
+      staff
         .filter((employee) => employee.getRole() === "Manager")
         .map((manager) => generateManager(manager))
     );
     html.push(
-      team
+      staff
         .filter((employee) => employee.getRole() === "Engineer")
         .map((engineer) => generateEngineer(engineer))
         .join("")
     );
     html.push(
-      team
+      staff
         .filter((employee) => employee.getRole() === "Intern")
         .map((intern) => generateIntern(intern))
         .join("")
@@ -76,8 +76,7 @@ const generateTeam = (team) => {
     return html.join("");
   };
   
-  // export function to generate entire page
-  module.exports = (team) => {
+  module.exports = (staff) => {
     return `
       <!DOCTYPE html>
   <html lang="en">
@@ -102,7 +101,7 @@ const generateTeam = (team) => {
       <div class="container">
           <div class="row">
               <div class="team-area col-12 d-flex justify-content-center">
-                  ${generateTeam(team)}
+                  ${generateTeam(staff)}
               </div>
           </div>
       </div>
